@@ -28,7 +28,7 @@ const Signup = () => {
 
     e.preventDefault();
 
-    axios.post("http://localhost:4000/user/signup", data)
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, data)
     .then((result) => {
         dispatch(set_emp_data(result.data))
         navigate("/")  

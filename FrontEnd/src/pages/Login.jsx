@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router';
 import { set_emp_data } from '../store/slices/UserSlice';
 import { useDispatch } from 'react-redux';
-
 const Login = () => {
 
   const [data, setData] = useState({
@@ -28,7 +27,7 @@ const Login = () => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:4000/user/login", data)
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, data)
     .then(response => {
       if(response.data.role == "admin" ) return navigate('/admin')
       dispatch(set_emp_data(response.data))

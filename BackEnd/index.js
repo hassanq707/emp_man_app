@@ -1,22 +1,27 @@
+require('dotenv').config()
 
 const express = require("express");
 const connectToMongo = require("./Connection");
 const cors = require("cors");
 const app = express()
-const PORT = 4000;
 const userRoute = require('./routes/user')
 const cookieParser = require("cookie-parser")
 const {restrictToLogin, checkForAuth} = require('./middleware');
 const USER = require("./models/users");
 
+const PORT = process.env.PORT || 4000;
+
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
+
 app.use(
   cors({
     // React app ka URL hai jahan se requests aa rahi hain.
-    origin: "http://localhost:5173", 
+    origin: FRONTEND_URL, 
     // Cookies ko allow karta hai ki frontend aur backend ke 
     // beech mein exchange ho sakein.
     credentials: true, 
@@ -49,7 +54,7 @@ app.post('/logout', (req, res) => {
 });
 
 
-connectToMongo("mongodb://127.0.0.1:27017/emp_app")
+connectToMongo(process.env.DB_URL)
 .then(console.log("MongoDB connect"))
 .catch((err) => console.log(err))
 
