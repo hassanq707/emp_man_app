@@ -15,18 +15,16 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
-const FRONTEND_URL = process.env.FRONTEND_URL ;
 
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://emp-man-app.vercel.app"; // Set the correct URL of your frontend.
 
 app.use(
   cors({
-    // React app ka URL hai jahan se requests aa rahi hain.
-    origin: FRONTEND_URL, 
-    // Cookies ko allow karta hai ki frontend aur backend ke 
-    // beech mein exchange ho sakein.
-    credentials: true, 
+    origin: FRONTEND_URL, // Allow your frontend domain
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
+
 
 
 app.use(checkForAuth)
