@@ -15,9 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
-
-console.log(FRONTEND_URL)
+const FRONTEND_URL = process.env.FRONTEND_URL ;
 
 
 app.use(

@@ -24,7 +24,9 @@ const Signup = () => {
     })
   }
 
+
   const submitHandle = (e) => {
+
 
     e.preventDefault();
 
@@ -32,6 +34,7 @@ const Signup = () => {
     .then((result) => {
         dispatch(set_emp_data(result.data))
         navigate("/")  
+        console.log(result)
     })
     .catch((err) => console.log(err))
 
