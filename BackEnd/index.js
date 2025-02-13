@@ -17,16 +17,26 @@ app.use(cookieParser())
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
+console.log(FRONTEND_URL)
+
+
+// app.use(
+//   cors({
+//     // React app ka URL hai jahan se requests aa rahi hain.
+//     origin: FRONTEND_URL, 
+//     // Cookies ko allow karta hai ki frontend aur backend ke 
+//     // beech mein exchange ho sakein.
+//     credentials: true, 
+//   })
+// );
 
 app.use(
   cors({
-    // React app ka URL hai jahan se requests aa rahi hain.
-    origin: FRONTEND_URL, 
-    // Cookies ko allow karta hai ki frontend aur backend ke 
-    // beech mein exchange ho sakein.
-    credentials: true, 
+    origin: "https://emp-man-app.vercel.app", // Frontend URL
+    credentials: true,
   })
 );
+
 
 app.use(checkForAuth)
 
