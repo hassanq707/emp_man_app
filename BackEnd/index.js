@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "https://emp-man-app.vercel.app"; // Set the correct URL of your frontend.
+const FRONTEND_URL = process.env.FRONTEND_URL ;
 
 app.use(
   cors({
