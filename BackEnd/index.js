@@ -16,12 +16,18 @@ app.use(express.urlencoded({extended : true}))
 app.use(cookieParser())
 
 
-const FRONTEND_URL = process.env.FRONTEND_URL ;
+const allowedOrigins = [process.env.FRONTEND_URL, 'https://emp-man-app.vercel.app'];
 
 app.use(
   cors({
-    origin: FRONTEND_URL, // Allow your frontend domain
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
   })
 );
 
