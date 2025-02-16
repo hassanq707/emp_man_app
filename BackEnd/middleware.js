@@ -4,8 +4,6 @@ function checkForAuth(req, res, next) {
 
     const { token } = req.cookies;
 
-    console.log(token)
-
     if (!token) return next()
 
     const user = getUser(token);
