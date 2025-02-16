@@ -32,8 +32,10 @@ const Login = () => {
       if(response.data.role == "admin" ) return navigate('/admin')
       dispatch(set_emp_data(response.data))
       navigate("/")  
+      console.log(response.data)
     })
     .catch(error => {
+      console.log(error)
       if (error.response) {
         console.log("Login Failed:", error.response.data.message);
         setError(error.response.data.message);

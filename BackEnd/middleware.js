@@ -8,6 +8,7 @@ function checkForAuth(req, res, next) {
 
     const user = getUser(token);
 
+
     if (!user)  return next()
 
     req.user = user;

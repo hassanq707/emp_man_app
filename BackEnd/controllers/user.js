@@ -35,12 +35,17 @@ async function handleLogin(req,res){
     if(!matchPassord) return res.status(400).json({ message : "Username or password incorrect"})
         
     const token = setUser(user)
+
     
     res.cookie("token", token, {
-        httpOnly: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000, // ✅ Cookie 7 din tak rahegi
-      });
+        maxAge: 2592000000, // 30 days
+        httpOnly: true, 
+        secure: true,  
+        sameSite: "None" 
+    });
       
+    res.json({ message: "Cookies set successfully!" });
+        
     res.json(user)
 
 }

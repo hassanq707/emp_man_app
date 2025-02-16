@@ -7,7 +7,7 @@ import EmpDash from "./dashboard/EmpDash";
 import AdminDash from "./dashboard/AdminDash";
 
 // Set global axios configuration
-// axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 // Ab jab bhi aap axios ka use karenge, cookies automatically send ki 
 // jaayengi, aur aapko har request mein withCredentials: true manually 
 // set karne ki zarurat nahi padegi.
