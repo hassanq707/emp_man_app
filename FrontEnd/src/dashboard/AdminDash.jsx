@@ -10,6 +10,9 @@ const AdminDash = () => {
     const [isAuthorized, setIsAuthorized] = useState(false);
     const navigate = useNavigate();
 
+
+    console.log("Hassan qadri")
+
     useEffect(() => {
         async function fetchUserData() {
             try {
@@ -21,8 +24,9 @@ const AdminDash = () => {
             }
             catch (err) {
                 if (err.response && err.response.status === 401) {
-                    alert("You are Unauthorized to access this page");
-                    navigate("/") 
+                    console.log(err)
+                    // alert("You are Unauthorized to access this page");
+                    // navigate("/") 
                 } 
                 setIsAuthorized(false);
             }
