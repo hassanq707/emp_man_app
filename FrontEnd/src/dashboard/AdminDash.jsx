@@ -17,9 +17,9 @@ const AdminDash = () => {
         async function fetchUserData() {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/allUsers`)
-                const {allUsers,admin} = response.data
-                setEmployees(allUsers)
-                setIsAuthorized(true)
+                // const {allUsers,admin} = response.data
+                // setEmployees(allUsers)
+                // setIsAuthorized(true)
                 console.log("DATAAAAA: " , response.data)
 
             }
