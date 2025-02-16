@@ -20,11 +20,12 @@ const AdminDash = () => {
                 const {allUsers,admin} = response.data
                 setEmployees(allUsers)
                 setIsAuthorized(true)
-                console.log(response.data)
+                console.log("DATAAAAA: " , response.data)
+
             }
             catch (err) {
                 if (err.response && err.response.status === 401) {
-                    console.log(err)
+                    console.log("ERRORRRRR: " , err)
                     // alert("You are Unauthorized to access this page");
                     // navigate("/") 
                 } 
