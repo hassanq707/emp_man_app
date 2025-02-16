@@ -27,12 +27,14 @@ const Login = () => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, data)
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, data, { withCredentials: true })
     .then(response => {
-      if(response.data.role == "admin" ) return navigate('/admin')
-      dispatch(set_emp_data(response.data))
-      navigate("/")  
+        console.log("Login Response:", response.data);  
+        dispatch(set_emp_data(response.data));  
+        if (response.data.role === "admin") return navigate('/admin');  
+        navigate("/");  
     })
+    
     .catch(error => {
       if (error.response) {
         console.log("Login Failed:", error.response.data.message);
