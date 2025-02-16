@@ -35,10 +35,10 @@ const Login = () => {
     })
     .catch(error => {
       if (error.response) {
-        console.log("Login Failed:", error.response.data.message);
+        // console.log("Login Failed:", error.response.data.message);
         setError(error.response.data.message);
       } else {
-        console.error("Network error:", error);
+        // console.error("Network error:", error);
         setError("Something went wrong. Please try again.");
       }
     });

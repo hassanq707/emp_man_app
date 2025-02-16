@@ -37,7 +37,7 @@ const EmpDash = () => {
                     }
                     return navigate("/login")
                 } else {
-                    console.log(err);
+                    // console.log(err);
                 }
                 setIsAuthorized(false);
 
