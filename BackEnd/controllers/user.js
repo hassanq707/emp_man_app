@@ -38,10 +38,12 @@ async function handleLogin(req,res){
     const token = setUser(user)
     
     res.cookie("token", token, {
-        httpOnly: true,   
+        httpOnly: true,
         secure: true,     
         sameSite: "None", 
-    });
+        maxAge: 7 * 24 * 60 * 60 * 1000, // ✅ Cookie 7 din tak rahegi
+      });
+      
       
     res.json(user)
 
