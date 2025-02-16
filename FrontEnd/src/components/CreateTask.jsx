@@ -28,7 +28,7 @@ const CreateTask = ({ employees, setEmployees, names = [] }) => {
 
     if (data.assignTo === "Select Employee") return alert("Please select an employee!")
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/createTask`, data, {withCredentials : true})
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/createTask`, data)
       .then((response) => {
         const { fullname, userTasks: updatedTask} = response.data
         setEmployees(

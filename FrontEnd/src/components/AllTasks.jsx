@@ -15,7 +15,7 @@ const AllTasks = ({ task }) => {
   const handleBtnClick = (btn) => {
     const updatedTask = emp_data.userTasks[btn].tasks
     if(updatedTask.some(obj => obj._id == task._id)) return null
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/updateTask`, { btn, task } , {withCredentials : true})
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/updateTask`, { btn, task })
       .then((response) => {
           const updatedUser = {...emp_data , userTasks : response.data.userTasks}
           dispatch(set_emp_data(updatedUser))

@@ -25,7 +25,7 @@ const EmpDash = () => {
     useEffect(() => {
         async function fetchUserData() {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/`, {withCredentials : true})
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/`)
                 dispatch(set_emp_data(response.data))
                 setIsAuthorized(true)
             }

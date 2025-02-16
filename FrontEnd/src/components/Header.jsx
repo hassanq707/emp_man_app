@@ -7,7 +7,7 @@ const Header = ({name}) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`, {withCredentials : true})
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`)
     .then(navigate('/login'))
     .catch(err => console.log(err))
   }
