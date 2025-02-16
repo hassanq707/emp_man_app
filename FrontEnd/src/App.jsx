@@ -5,7 +5,6 @@ import Signup from "./pages/Signup";
 import axios from "axios"
 import EmpDash from "./dashboard/EmpDash";
 import AdminDash from "./dashboard/AdminDash";
-import Hassan from "./components/Hassan";
 
 // Set global axios configuration
 axios.defaults.withCredentials = true;
@@ -20,7 +19,6 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/admin" element={<AdminDash />} />
-      <Route path="/hassan" element={<Hassan />} />
     </>
   )
 );

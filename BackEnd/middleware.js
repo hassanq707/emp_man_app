@@ -20,7 +20,10 @@ function restrictToLogin(roles = []) {
 
     return function(req,res,next){
 
-    if(!req.user) return res.status(401).json({ message: "Login first" }); 
+    // if(!req.user) return res.status(401).json({ message: "Login first" });
+    
+    if(!req.user) return res.status(401).json({ message: req.user }); 
+    
         
     if(!roles.includes(req.user.role)) return res.status(401).json({ message: "Unauthorized" });
 

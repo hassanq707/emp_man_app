@@ -40,10 +40,6 @@ app.get("/", restrictToLogin(["employee"]) , async (req, res) => {
     res.json(user);
 });
 
-app.get('/debug-token', (req, res) => {
-  res.json({ cookies: req.cookies, token: req.cookies.token });
-});
-
 
 app.get("/allUsers", restrictToLogin(["admin"]) ,async (req, res) => {
   const allUsers = await USER.find({ role : "employee"})
