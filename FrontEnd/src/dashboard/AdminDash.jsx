@@ -17,17 +17,15 @@ const AdminDash = () => {
         async function fetchUserData() {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/allUsers`)
-                // const {allUsers,admin} = response.data
-                // setEmployees(allUsers)
-                // setIsAuthorized(true)
-                console.log("DATAAAAA: " , response.data)
+                const {allUsers,admin} = response.data
+                setEmployees(allUsers)
+                setIsAuthorized(true)
 
             }
             catch (err) {
                 if (err.response && err.response.status === 401) {
-                    console.log("ERRORRRRR: " , err)
-                    // alert("You are Unauthorized to access this page");
-                    // navigate("/") 
+                    alert("You are Unauthorized to access this page");
+                    navigate("/") 
                 } 
                 setIsAuthorized(false);
             }
