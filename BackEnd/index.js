@@ -46,7 +46,7 @@ app.get("/allUsers", restrictToLogin(["admin"]) ,async (req, res) => {
   res.json({
       allUsers,
       admin : req.user
-    });
+  });
 });
 
 app.post('/logout', (req, res) => {

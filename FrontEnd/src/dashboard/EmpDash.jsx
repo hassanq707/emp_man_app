@@ -30,8 +30,7 @@ const EmpDash = () => {
                 setIsAuthorized(true)
             }
             catch (err) {
-                if (err.response && err.response.status === 401) {
-                    console.log(err) 
+                if (err.response && err.response.status === 401) { 
                     if(err.response.data.message == "Unauthorized"){
                         alert("You cannot access employees Dashboard");
                         return navigate('/admin')
