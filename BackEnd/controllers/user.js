@@ -41,9 +41,11 @@ async function handleLogin(req, res) {
         maxAge: 900000,
         httpOnly: false,
         secure: true,
-        sameSite: 'none',
+        sameSite: 'none', // Required for cross-site cookies
         domain: '.vercel.app'
     });
+
+    // res.cookie("token", token)
 
     return res.json(user)
 
