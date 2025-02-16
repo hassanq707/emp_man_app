@@ -28,7 +28,6 @@ app.use(
 console.log("Frontend URL from ENV:", process.env.FRONTEND_URL);
 
 
-
 app.use(checkForAuth)
 
 app.get("/", restrictToLogin(["employee"]) , async (req, res) => {
