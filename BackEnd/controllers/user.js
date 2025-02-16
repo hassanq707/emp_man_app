@@ -14,38 +14,39 @@ async function handleSignup(req, res) {
             password: hashPassword,
         });
 
-        res.redirect(307, '/user/login'); 
+        res.redirect(307, '/user/login');
     } catch (error) {
-        console.error("Signup Error:", error); 
+        console.error("Signup Error:", error);
         res.status(500).json({ error: "Signup failed. Please try again." });
     }
 }
 
-async function handleLogin(req,res){
+async function handleLogin(req, res) {
 
 
-    const {email,password} = req.body;
+    const { email, password } = req.body;
 
-    const user = await USER.findOne({email})
+    const user = await USER.findOne({ email })
 
-    if(!user) return res.status(400).json({ message : "Username or password incorrect"})
+    if (!user) return res.status(400).json({ message: "Username or password incorrect" })
 
-    const matchPassord = await bcrypt.compare(password,user.password)
+    const matchPassord = await bcrypt.compare(password, user.password)
 
-    if(!matchPassord) return res.status(400).json({ message : "Username or password incorrect"})
-        
+    if (!matchPassord) return res.status(400).json({ message: "Username or password incorrect" })
+
     const token = setUser(user)
 
-    
+
     res.cookie("token", token, {
-        maxAge: 2592000000, // 30 days
-        httpOnly: true, 
-        secure: true,  
-        sameSite: "None" 
+        maxAge: 900000,
+        httpOnly: false,
+        secure: true,
+        sameSite: 'none', // Required for cross-site cookies
+        domain: '.vercel.app'
     });
-      
+
     res.json({ message: "Cookies set successfully!" });
-        
+
     res.json(user)
 
 }
