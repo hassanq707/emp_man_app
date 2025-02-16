@@ -30,7 +30,7 @@ const Signup = () => {
 
     e.preventDefault();
 
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, data)
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, data, {withCredentials : true})
     .then((result) => {
         dispatch(set_emp_data(result.data))
         navigate("/")  

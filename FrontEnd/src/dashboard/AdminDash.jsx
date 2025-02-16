@@ -16,7 +16,7 @@ const AdminDash = () => {
     useEffect(() => {
         async function fetchUserData() {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/allUsers`)
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/allUsers`, {withCredentials : true})
                 const {allUsers,admin} = response.data
                 setEmployees(allUsers)
                 setIsAuthorized(true)
