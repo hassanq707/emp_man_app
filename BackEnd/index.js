@@ -30,7 +30,7 @@ console.log("Frontend URL from ENV:", process.env.FRONTEND_URL);
 
 app.use(checkForAuth)
 
-app.get("/", restrictToLogin(["employee"]) , async (req, res) => {
+app.get("/" , async (req, res) => {
     const user = await USER.findOne({
         fullname : req.user.fullname
     })
@@ -41,7 +41,7 @@ app.get("/", restrictToLogin(["employee"]) , async (req, res) => {
 });
 
 
-app.get("/allUsers", restrictToLogin(["admin"]) ,async (req, res) => {
+app.get("/allUsers" ,async (req, res) => {
   const allUsers = await USER.find({ role : "employee"})
   res.json({
       allUsers,
