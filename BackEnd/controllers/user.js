@@ -23,7 +23,6 @@ async function handleSignup(req, res) {
 
 async function handleLogin(req,res){
 
-    
 
     const {email,password} = req.body;
 
@@ -37,13 +36,12 @@ async function handleLogin(req,res){
         
     const token = setUser(user)
     
-    res.cookie("token", token, {
+    res.status(200).cookie("token", token, {
         httpOnly: true,
         secure: true,     
         sameSite: "None", 
         maxAge: 7 * 24 * 60 * 60 * 1000, // ✅ Cookie 7 din tak rahegi
       });
-      
       
     res.json(user)
 
