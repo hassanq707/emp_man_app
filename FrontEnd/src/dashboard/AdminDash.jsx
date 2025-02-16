@@ -20,7 +20,7 @@ const AdminDash = () => {
                 const {allUsers,admin} = response.data
                 setEmployees(allUsers)
                 setIsAuthorized(true)
-                console.log(admin)
+                console.log(response.data)
             }
             catch (err) {
                 if (err.response && err.response.status === 401) {

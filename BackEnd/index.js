@@ -41,11 +41,12 @@ app.get("/", restrictToLogin(["employee"]) , async (req, res) => {
 });
 
 app.get("/allUsers", restrictToLogin(["admin"]) ,async (req, res) => {
-  const allUsers = await USER.find({ role : "employee"})
-  res.json({
-    allUsers,
-    admin : req.user
-  });
+  // const allUsers = await USER.find({ role : "employee"})
+  // res.json({
+    //   allUsers,
+    //   admin : req.user
+    // });
+    res.json({message : req.user})
 });
 
 app.post('/logout', (req, res) => {
